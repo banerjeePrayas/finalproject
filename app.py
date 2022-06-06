@@ -2,7 +2,6 @@ from flask import Flask, render_template, request
 import cv2
 from keras.models import load_model
 import numpy as np
-import pickle
 
 app = Flask(__name__)
 
@@ -29,19 +28,7 @@ def after():
 
         image = np.reshape(image, (1, 48, 48, 1))
 
-    # loadedModel = pickle.load(open('.//final_model', 'rb'))
-
-    # infile = open('modelfinal.h5', 'rb')
-    # new_dict = pickle.load(infile)
-    # infile.close()
-
-    # print(new_dict)
-
-    # console.log('Python')
     model = load_model('Case_1.h5')
-
-    # loaded_model = pickle.load(open('./model', 'rb'))
-    # model = pickle.load(open('./final_model', 'rb'))
 
     prediction = model.predict(image)
 
